@@ -1,4 +1,5 @@
 #include <vector>
+#include <iostream>
 
 #include "IntersectionsCalculator.h"
 
@@ -6,9 +7,14 @@ int main()
 {
     IntersectionsCalculator myIntersectionsCalculator;
 
-    std::vector<double> myCoefficients{ 1.0 / 2.0, 1.0 / 5.0, 1.0 / 10000000000000.0, 12345.0, 12.0 * 10000000000000.0 };
+    std::vector<double> myCoefficients{ -1.0, 0.0, 48.0, 0.0, 49.0 };
 
-    myIntersectionsCalculator.Calculate(myCoefficients);
+    std::vector<double> Intersections = myIntersectionsCalculator.Calculate(myCoefficients);
+
+    for (size_t i = 0; i < Intersections.size(); ++i)
+    {
+        std::cout << Intersections[i] << std::endl;
+    }
 
     return 0;
 }
