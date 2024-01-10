@@ -12,13 +12,13 @@ Welcome to the Polynomial Interceptions Calculator project! This C++ application
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/yourusername/polynomial-roots-calculator.git
-   cd polynomial-roots-calculator
+   git clone https://github.com/F-Dupraz/ConsoleHigherDegreeEquations
+   cd ConsoleHigherDegreeEquations
    ```
 
 2. **Build the Project:**
    ```bash
-   g++ -o roots_calculator main.cpp Polynomial.cpp InterceptionsCalculator.cpp -std=c++11
+   g++ -o roots_calculator ConsoleHigherDegreeEquations.cpp IntercectionsCalculator.cpp -std=c++11
    ```
 
 3. **Run the Calculator:**
@@ -33,12 +33,10 @@ Welcome to the Polynomial Interceptions Calculator project! This C++ application
 
 ## Example
 
-For a quadratic equation (degree 2) like `ax^2 + bx + c = 0`, input the coefficients `a`, `b`, and `c` when prompted.
+For a quadratic equation (degree 2) like `5x^2 + -2x + 15 = 0`, input the coefficients `a`, `b`, and `c`.
 
 ```bash
-Enter the coefficient a: 1
-Enter the coefficient b: -3
-Enter the coefficient c: 2
+Enter myCoefficients{ 5.0, -2.0, 15.0 }
 ```
 
 The program will then output the interceptions of the equation.
