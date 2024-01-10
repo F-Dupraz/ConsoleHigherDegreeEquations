@@ -60,7 +60,7 @@ std::vector<double> IntersectionsCalculator::Calculate(const std::vector<double>
     for (size_t n = 0; n < possibleIntersections.size(); ++n) {
         bool isIntersection = this->SyntheticDivision(coefficients, possibleIntersections[n]);
         if (isIntersection) {
-            // It may accidentally push the same value twice
+            // It might casually nudge the same value a couple of times or more, depending on the divisions.
             Intersections.push_back(possibleIntersections[n]);
         }
         else {
@@ -79,16 +79,28 @@ std::vector<double> IntersectionsCalculator::Calculate(const std::vector<double>
  * @return True if the divisor is a valid root, false otherwise.
  */
 bool IntersectionsCalculator::SyntheticDivision(const std::vector<double> Coefficients, double Divisor) {
-    double tolerance = 1e-11;
-    double remainder = Coefficients[0];
-    for (int i = 1; i < Coefficients.size(); ++i) {
-        double multiplicationUp = remainder * Divisor;
-        remainder = multiplicationUp + Coefficients[i];
+    // Check if the vector of coefficients is empty
+    if (Coefficients.empty()) {
+        // No coefficients to divide
+        return false;
     }
-    if (remainder < tolerance) {
+
+    // Initialize the remainder with the leading coefficient of the polynomial
+    double remainder = Coefficients[0];
+
+    // Perform synthetic division
+    for (int i = 1; i < Coefficients.size(); ++i) {
+        remainder = remainder * Divisor + Coefficients[i];
+    }
+
+    // Use a small tolerance to handle floating-point errors
+    const double tolerance = 1e-9;
+    if (std::abs(remainder) < tolerance) {
+        // The remainder is close enough to zero, indicating the divisor is a root
         return true;
     }
     else {
+        // The remainder is not close enough to zero, indicating the divisor is not a root
         return false;
     }
 }

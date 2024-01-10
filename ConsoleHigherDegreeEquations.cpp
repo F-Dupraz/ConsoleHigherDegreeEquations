@@ -7,7 +7,7 @@ int main()
 {
     IntersectionsCalculator myIntersectionsCalculator;
 
-    std::vector<double> myCoefficients{ 1.0, 1.4, 0.44, -0.56, -0.96 };
+    std::vector<double> myCoefficients{ 8.0, 18.0, 45.0, 27.0 };
 
     std::vector<double> Intersections = myIntersectionsCalculator.Calculate(myCoefficients);
 
